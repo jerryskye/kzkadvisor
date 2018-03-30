@@ -1,0 +1,33 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    innate (2015.10.28)
+      rack (~> 1.6.4)
+    jdbc-postgres (42.1.4)
+    jruby-jars (9.1.16.0)
+    jruby-rack (1.1.21)
+    rack (1.6.9)
+    rake (12.3.1)
+    ramaze (2012.12.08)
+      innate (>= 2012.12)
+      rake
+    rubyzip (1.2.1)
+    sequel (5.6.0)
+    warbler (2.0.4)
+      jruby-jars (>= 9.0.0.0)
+      jruby-rack (>= 1.1.1, < 1.3)
+      rake (>= 10.1.0)
+      rubyzip (~> 1.0, < 1.4)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  jdbc-postgres
+  rake
+  ramaze (>= 2.0.0)
+  sequel
+  warbler
+
+BUNDLED WITH
+   1.16.1
