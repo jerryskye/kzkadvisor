@@ -5,7 +5,7 @@
 class Controller < Ramaze::Controller
   layout :default
   helper :xhtml
-  engine :etanni
+  engine :haml
 end
 
 # Here you can require all your other controllers. Note that if you have multiple

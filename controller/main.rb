@@ -23,4 +23,9 @@ class MainController < Controller
     
     return 'There is no \'notemplate.xhtml\' associated with this action.'
   end
+
+  def autocomplete
+    json = Faraday.get('https://rj.kzkgop.com.pl/api/v1/geo_location/', {query: request.params['term']}).body
+    respond(json, 200, {'Content-Type' => 'application/json'})
+  end
 end

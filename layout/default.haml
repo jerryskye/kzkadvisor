@@ -1,0 +1,37 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %title=@title
+  %body
+    %p
+      =css('reset')
+      =css('grid')
+      =css('layout')
+      =css('text')
+    .container
+      #container.row
+        / Top part, contains the navigation menu
+        #top.grid_12
+          %header.grid_6
+            %h1=@title
+          %nav.grid_6.last
+            %ul.clearfix
+              %li
+                %a{:href => "http://ramaze.net/"} Website
+              %li
+                %a{:href => "http://ramaze.net/documentation/index.html"}
+                  Documentation
+              %li
+                %a{:href => "https://groups.google.com/forum/#!forum/ramaze"}
+                  Mailing List
+        #content.grid_12
+          =@content
+      %footer#footer
+        %p
+          Ramaze is free software and is licensed under the MIT license.
+          %br/
+          All textual content is licensed under a
+          %a{:href => "http://creativecommons.org/licenses/by-nc-sa/3.0/"}
+            Creative Commons license.
