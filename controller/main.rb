@@ -25,7 +25,13 @@ class MainController < Controller
   end
 
   def autocomplete
-    json = Faraday.get('https://rj.kzkgop.com.pl/api/v1/geo_location/', {query: request.params['term']}).body
-    respond(json, 200, {'Content-Type' => 'application/json'})
+    conn = Faraday.new(url: 'https://rj.kzkgop.com.pl') do |faraday|
+      faraday.request :url_encoded
+      faraday.response :json, :content_type => 'application/json'
+      faraday.adapter Faraday.default_adapter
+    end
+    response = conn.get('/api/v1/geo_location/', {query: request.params['term']})
+    body = response.body['results'].map {|hsh| {label: hsh['name'], value: hsh['name'], coords: hsh['coordinates']}} unless response.body['results'].nil?
+    respond(JSON.dump(body), response.status, {'Content-Type' => 'application/json'})
   end
 end
