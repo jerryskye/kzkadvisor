@@ -5,6 +5,7 @@ require 'ramaze'
 require 'faraday'
 require 'faraday_middleware'
 require 'json'
+require 'nokogiri'
 
 # Make sure that Ramaze knows where you are
 Ramaze.options.roots = [__DIR__]

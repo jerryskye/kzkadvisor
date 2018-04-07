@@ -6,15 +6,15 @@
     lel = {
       appendTo: '#menu',
       source: "#{Ramaze.options.prefix}/autocomplete",
-      delay: 1000,
+      delay: 500,
       select: function(event, ui) {
         $('input#' + event.target.id + '_lat').val(ui.item['coords'][0]);
-        $('input#' + event.target.id + '_lng').val(ui.item['coords'][1]);
+        $('input#' + event.target.id + '_lon').val(ui.item['coords'][1]);
       }
     };
 
-    $("#id_trip_from").autocomplete(lel);
-    $("#id_trip_to").autocomplete(lel);
+    $("#trip_from").autocomplete(lel);
+    $("#trip_to").autocomplete(lel);
 
   });
 
@@ -55,11 +55,12 @@
 %p
   The record:
   =@test.str
-%form
-  %input#id_trip_from{:type => "text"}
-  %input#id_trip_from_lat{:type => 'hidden'}
-  %input#id_trip_from_lng{:type => 'hidden'}
-  %input#id_trip_to{:type => "text"}
-  %input#id_trip_to_lat{:type => 'hidden'}
-  %input#id_trip_to_lng{:type => 'hidden'}
+%form{:action => route(:get_lines), :method => 'POST'}
+  %input#trip_from{:type => "text", :name => 'trip_from'}
+  %input#trip_from_lat{:type => 'hidden', :name => 'trip_from_lat'}
+  %input#trip_from_lon{:type => 'hidden', :name => 'trip_from_lon'}
+  %input#trip_to{:type => "text", :name => 'trip_to'}
+  %input#trip_to_lat{:type => 'hidden', :name => 'trip_to_lat'}
+  %input#trip_to_lon{:type => 'hidden', :name => 'trip_to_lon'}
+  %input{:type => 'submit'}
 %ul#menu.ui-front
