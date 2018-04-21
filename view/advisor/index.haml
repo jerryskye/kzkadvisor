@@ -1,0 +1,36 @@
+%link{:rel => 'stylesheet', :type =>'text/css', :href => 'http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css'}
+%script{:src => "https://code.jquery.com/jquery-3.3.1.min.js", :type => "text/javascript"}
+%script{:src => "https://code.jquery.com/ui/1.12.1/jquery-ui.min.js", :type => "text/javascript"}
+:javascript
+  $(function() {
+    lel = {
+      appendTo: '#menu',
+      source: "#{route(:autocomplete)}",
+      delay: 500,
+      select: function(event, ui) {
+        $('input#' + event.target.id + '_lat').val(ui.item['coords'][0]);
+        $('input#' + event.target.id + '_lon').val(ui.item['coords'][1]);
+      }
+    };
+
+    $("#trip_from").autocomplete(lel);
+    $("#trip_to").autocomplete(lel);
+
+  });
+
+%p=flash[:notice]
+%p=flash[:alert]
+%h2 Pls input your route
+%form{:action => route(:get_lines), :method => 'POST'}
+  %label{:for => 'trip_from'}From
+  %input#trip_from{:type => "text", :name => 'trip_from'}
+  %input#trip_from_lat{:type => 'hidden', :name => 'trip_from_lat'}
+  %input#trip_from_lon{:type => 'hidden', :name => 'trip_from_lon'}
+  %br
+  %label{:for => 'trip_to'}To
+  %input#trip_to{:type => "text", :name => 'trip_to'}
+  %input#trip_to_lat{:type => 'hidden', :name => 'trip_to_lat'}
+  %input#trip_to_lon{:type => 'hidden', :name => 'trip_to_lon'}
+  %br
+  %input{:type => 'submit'}
+%ul#menu.ui-front

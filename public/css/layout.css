@@ -21,7 +21,7 @@
 /* Top part of the website, contains the title and the navigation menu */
 #top
 {
-    background:    #E33F1E;
+    /*background:    #E33F1E;*/
     height:        70px;
     margin-bottom: 20px;
     padding:       0px 10px;
@@ -63,10 +63,10 @@
                 text-decoration: none;
             }
 
-            #top nav ul li a:hover
+            /*#top nav ul li a:hover
             {
                 background: #D43919;
-            }
+            }*/
 
 /* Footer at the bottom of the page */
 #footer

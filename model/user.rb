@@ -1,0 +1,5 @@
+class User < Sequel::Model
+  def self.authenticate(creds)
+    User[login: creds['login'], password: Sequel::SQL::Blob.new(Digest::SHA256.digest(creds['password']))]
+  end
+end

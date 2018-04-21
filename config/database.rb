@@ -1,2 +1,2 @@
 require 'sequel'
-DB = Sequel.connect('jdbc:postgresql://localhost/testdb')
+DB = Sequel.connect('jdbc:postgresql://localhost/kzkadvisor')

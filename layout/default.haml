@@ -9,6 +9,18 @@
     =css('grid')
     =css('layout')
     =css('text')
+    :css
+      a:hover, h1 a:hover {
+        color: #{theme};
+      }
+
+      #top {
+        background: #{theme};
+      }
+
+      #top nav ul li a:hover {
+        background: #{darker_theme}
+      }
     .container
       #container.row
         / Top part, contains the navigation menu
@@ -17,20 +29,15 @@
             %h1=@title
           %nav.grid_6.last
             %ul.clearfix
-              %li
-                %a{:href => "http://ramaze.net/"} Website
-              %li
-                %a{:href => "http://ramaze.net/documentation/index.html"}
-                  Documentation
-              %li
-                %a{:href => "https://groups.google.com/forum/#!forum/ramaze"}
-                  Mailing List
+              -if logged_in?
+                %li
+                  =AdvisorController.a('Advisor', :/)
+                %li
+                  =MainController.a('Logout', :logout)
+              -else
+                %li
+                  =a('Login', :login)
+                %li
+                  =a('Register', :register)
         #content.grid_12
           =@content
-      %footer#footer
-        %p
-          Ramaze is free software and is licensed under the MIT license.
-          %br/
-          All textual content is licensed under a
-          %a{:href => "http://creativecommons.org/licenses/by-nc-sa/3.0/"}
-            Creative Commons license.

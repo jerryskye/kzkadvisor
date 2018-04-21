@@ -51,10 +51,10 @@ ul, ol
     margin-bottom: 20px;
 }
 
-a:hover, h1 a:hover
+/*a:hover, h1 a:hover
 {
     color: #E33F1E;
-}
+}*/
 
 h1, h2, h3, h4, h5, h6
 {
