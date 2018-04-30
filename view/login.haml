@@ -3,14 +3,13 @@
     document.getElementById('top').style.background = event.target.value;
   }
 
-%p=flash[:notice]
-%p=flash[:alert]
 %h2 Pls input your credentials
 %form{:action => route(:handle_login), :method => 'POST'}
-  %label{:for => 'login'}Login
-  %input#login{:type => 'text', :name => 'login'}
-  %br
-  %label{:for => 'password'}Password
-  %input#password{:type => 'password', :name => 'password'}
-  %br
-  %input{:type => 'submit'}
+  .row
+    .col
+      %input#login.form-control{:type => 'text', :name => 'login', :required => 'required', :autofocus => 'autofocus', :placeholder => 'Login'}
+    .col
+      %input#password.form-control{:type => 'password', :name => 'password', :required => 'required', :placeholder => 'Password'}
+  .row
+    .col
+      %button.btn.btn-primary{:type => 'submit'}Submit

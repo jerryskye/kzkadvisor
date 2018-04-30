@@ -5,6 +5,7 @@
     %meta{:charset => "utf-8"}/
     %title=@title
   %body
+    =css('bootstrap.min')
     =css('reset')
     =css('grid')
     =css('layout')
@@ -33,6 +34,8 @@
                 %li
                   =AdvisorController.a('Advisor', :/)
                 %li
+                  =MainController.a('Show logins', :show_logins)
+                %li
                   =MainController.a('Logout', :logout)
               -else
                 %li
@@ -40,4 +43,8 @@
                 %li
                   =a('Register', :register)
         #content.grid_12
+          -if flash[:notice]
+            .alert.alert-primary=flash[:notice]
+          -if flash[:alert]
+            .alert.alert-danger=flash[:alert]
           =@content

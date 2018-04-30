@@ -1,0 +1,10 @@
+%table.table
+  %tr
+    %th Timestamp
+    %th Successful?
+  -@logins.reverse_each do |login|
+    %tr
+      %td=login.timestamp
+      %td=login.success
+%a.btn.btn-info{:href => route(:pdf_report), :role => 'button'}Generate PDF report
+%a.btn.btn-danger{:href => route(:clear_logins), :role => 'button'}Clear logins

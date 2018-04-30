@@ -18,19 +18,18 @@
 
   });
 
-%p=flash[:notice]
-%p=flash[:alert]
 %h2 Pls input your route
 %form{:action => route(:get_lines), :method => 'POST'}
-  %label{:for => 'trip_from'}From
-  %input#trip_from{:type => "text", :name => 'trip_from'}
-  %input#trip_from_lat{:type => 'hidden', :name => 'trip_from_lat'}
-  %input#trip_from_lon{:type => 'hidden', :name => 'trip_from_lon'}
-  %br
-  %label{:for => 'trip_to'}To
-  %input#trip_to{:type => "text", :name => 'trip_to'}
-  %input#trip_to_lat{:type => 'hidden', :name => 'trip_to_lat'}
-  %input#trip_to_lon{:type => 'hidden', :name => 'trip_to_lon'}
-  %br
-  %input{:type => 'submit'}
+  .row
+    .col
+      %input#trip_from.form-control{:type => "text", :name => 'trip_from', :placeholder => 'From'}
+      %input#trip_from_lat{:type => 'hidden', :name => 'trip_from_lat'}
+      %input#trip_from_lon{:type => 'hidden', :name => 'trip_from_lon'}
+    .col
+      %input#trip_to.form-control{:type => "text", :name => 'trip_to', :placeholder => 'To'}
+      %input#trip_to_lat{:type => 'hidden', :name => 'trip_to_lat'}
+      %input#trip_to_lon{:type => 'hidden', :name => 'trip_to_lon'}
+  .row
+    .col
+      %button.btn.btn-primary{:type => 'submit'}Submit
 %ul#menu.ui-front

@@ -7,7 +7,6 @@ module CustomHelpers
   end
 
   def darker_theme
-    #(theme[1..-1].to_i(16) - '111111'.to_i(16)).to_s(16).prepend('#')
     theme.gsub(/[1-9a-f]/) {|char| (char.to_i(16) - 1).to_s(16) }
   end
 end
