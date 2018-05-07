@@ -1,0 +1,14 @@
+:css
+  table {
+    font-size: 60px;
+    text-align: center;
+  }
+
+%table.table
+  %tr
+    %th Timestamp
+    %th Successful?
+  -@logins.reverse_each do |login|
+    %tr
+      %td=login.timestamp
+      %td=login.success

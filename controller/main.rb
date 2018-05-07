@@ -71,12 +71,13 @@ class MainController < Controller
       redirect(route(:login))
     end
   end
-  
+
   def pdf_report
+    @logins = user.logins
     PDFKit.configure do |config|
       config.wkhtmltopdf = '/usr/local/bin/wkhtmltopdf'
     end
-    kit = PDFKit.new(render_partial(:show_logins))
+    kit = PDFKit.new(render_partial(:report))
     kit.stylesheets << 'public/css/bootstrap.min.css'
     kit.stylesheets << 'public/css/reset.css'
     kit.stylesheets << 'public/css/grid.css'
